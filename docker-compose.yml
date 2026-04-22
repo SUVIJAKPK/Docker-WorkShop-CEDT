@@ -28,6 +28,7 @@ services:
     # TODO(step-5e): mount the named volume `pgdata` at /var/lib/postgresql/data.
         volumes:
           - pgdata:/var/lib/postgresql/data
+          - ./app/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     #       there might be something here ?
 
     # TODO(step-5f): set Postgres env vars so the DB and user are created on startup.
@@ -38,7 +39,7 @@ services:
 
     # TODO(step-5g): bind-mount ./app/db/init.sql into /docker-entrypoint-initdb.d/.
     #   HINT: add this alongside the pgdata volume from step-5e:
-        - ./app/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    #    - ./app/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
 # TODO(step-5h): declare the named volume `pgdata` at the top level.
 volumes:
